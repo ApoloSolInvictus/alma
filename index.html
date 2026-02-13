@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUNA INVICTUS | Arquitectura del Alma</title>
+    
+    <!-- Librerías -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Montserrat:wght@200;400;500&display=swap" rel="stylesheet">
+
+    <!-- React -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        luna: {
+                            gold: '#D4AF37',
+                            rose: '#FCE7F3',
+                            dark: '#1a1a1a',
+                            cream: '#FAF9F6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #FAF9F6; color: #1a1a1a; overflow-x: hidden; }
+        
+        .hero-bg {
+            background-image: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .fade-in-up { animation: fadeInUp 1s ease-out forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Chat Widget */
+        .chat-widget { position: fixed; bottom: 30px; right: 30px; z-index: 50; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-50 top-0 left-0 p-6 flex justify-between items-center mix-blend-difference text-white">
+        <div class="text-2xl font-serif italic tracking-widest">LUNA INVICTUS</div>
+        <div class="hidden md:flex gap-8 text-sm uppercase tracking-widest font-light">
+            <a href="#philosophy" class="hover:text-luna-gold transition">Filosofía</a>
+            <a href="#spaces" class="hover:text-luna-gold transition">Espacios</a>
+            <a href="#soul" class="hover:text-luna-gold transition">El Alma</a>
+        </div>
+        <button onclick="toggleChat()" class="border border-white px-6 py-2 rounded-full hover:bg-white hover:text-black transition uppercase text-xs tracking-widest">
+            Consulta Espiritual
+        </button>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="h-screen hero-bg relative flex items-center justify-center text-center px-4">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="relative z-10 text-white max-w-4xl fade-in-up">
+            <p class="text-sm md:text-base uppercase tracking-[0.3em] mb-4 text-luna-rose">Diseño Interior & Bienestar</p>
+            <h1 class="text-6xl md:text-9xl font-serif font-light mb-6 leading-none">
+                ARQUITECTURA <br> <span class="italic text-luna-gold">DEL ALMA</span>
+            </h1>
+            <p class="text-lg md:text-xl font-light max-w-lg mx-auto leading-relaxed opacity-90">
+                Creamos espacios que no solo se habitan, se sienten. 
+                Donde la materia y el espíritu danzan en perfecta armonía.
+            </p>
+            <div class="mt-12">
+                <a href="#spaces" class="inline-block w-12 h-12 border border-white/50 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition duration-500">
+                    <i class="ph ph-arrow-down text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section id="philosophy" class="py-32 px-6 bg-luna-cream">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative">
+                <div class="absolute -top-10 -left-10 w-full h-full border border-luna-gold/30 -z-0"></div>
+                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4f9d?q=80&w=1000&auto=format&fit=crop" class="w-full h-[600px] object-cover grayscale hover:grayscale-0 transition duration-1000 z-10 relative shadow-2xl" alt="Interior Zen">
+            </div>
+            <div>
+                <span class="text-luna-gold uppercase tracking-widest text-xs font-bold">Nuestra Esencia</span>
+                <h2 class="text-5xl font-serif mt-4 mb-8 text-luna-dark">Más que decorar, <br> <span class="italic">sanamos espacios.</span></h2>
+                <p class="text-gray-600 mb-6 leading-loose font-light">
+                    Creemos que tu hogar es el reflejo de tu mundo interior. 
+                    A través del color, la luz y la energía, transformamos paredes frías en santuarios de paz.
+                    Cada proyecto es un ritual, cada mueble una intención.
+                </p>
+                <div class="grid grid-cols-2 gap-8 mt-12">
+                    <div>
+                        <i class="ph ph-sparkle text-3xl text-luna-gold mb-2"></i>
+                        <h3 class="font-serif text-xl mb-1">Armonía Energética</h3>
+                        <p class="text-xs text-gray-500 uppercase tracking-wide">Feng Shui & Flow</p>
+                    </div>
+                    <div>
+                        <i class="ph ph-plant text-3xl text-luna-gold mb-2"></i>
+                        <h3 class="font-serif text-xl mb-1">Diseño Biofílico</h3>
+                        <p class="text-xs text-gray-500 uppercase tracking-wide">Naturaleza Viva</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPACES GALLERY -->
+    <section id="spaces" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-serif text-luna-dark">Colección de Espacios</h2>
+                <p class="text-gray-400 mt-4 font-light italic">Donde la luz toca la materia</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Item 1 -->
+                <div class="group cursor-pointer">
+                    <div class="overflow-hidden mb-4 relative h-[500px]">
+                        <img src="https://images.unsplash.com/photo-1616137466211-f939a420be84?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110" alt="Minimalist Living">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
+                    </div>
+                    <h3 class="text-2xl font-serif italic text-luna-dark">El Refugio Urbano</h3>
+                    <p class="text-xs uppercase tracking-widest text-gray-400 mt-1">San José, Costa Rica</p>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="group cursor-pointer md:-mt-16">
+                    <div class="overflow-hidden mb-4 relative h-[500px]">
+                        <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110" alt="Boho Bedroom">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
+                    </div>
+                    <h3 class="text-2xl font-serif italic text-luna-dark">Sueños de Bohème</h3>
+                    <p class="text-xs uppercase tracking-widest text-gray-400 mt-1">Escazú, Costa Rica</p>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="group cursor-pointer">
+                    <div class="overflow-hidden mb-4 relative h-[500px]">
+                        <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110" alt="Modern Kitchen">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
+                    </div>
+                    <h3 class="text-2xl font-serif italic text-luna-dark">Cocina Alquimia</h3>
+                    <p class="text-xs uppercase tracking-widest text-gray-400 mt-1">Santa Ana, Costa Rica</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REACT CHAT WIDGET -->
+    <div id="chat-root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+        const API_URL = "https://abundalegal-c960c33a1447.herokuapp.com"; // Usamos tu backend OpenAI existente
+
+        const ChatWidget = () => {
+            const [isOpen, setIsOpen] = useState(false);
+            const [messages, setMessages] = useState([
+                { role: 'ai', content: "Bienvenido a mi espacio sagrado. Soy Noelia, tu guía de diseño y bienestar. ¿Cómo puedo armonizar tu vida hoy?" }
+            ]);
+            const [input, setInput] = useState("");
+            const [loading, setLoading] = useState(false);
+            const bottomRef = useRef(null);
+
+            // Expose toggle function
+            useEffect(() => { window.toggleChat = () => setIsOpen(true); }, []);
+            useEffect(() => { if(isOpen) bottomRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [messages, isOpen]);
+
+            const sendMessage = async () => {
+                if(!input.trim()) return;
+                const newMsg = { role: 'user', content: input };
+                setMessages(prev => [...prev, newMsg]);
+                setInput("");
+                setLoading(true);
+
+                try {
+                    // PERSONALIDAD DE NOELIA (DESIGNER & HEALER)
+                    const soulPrompt = `
+                        ERES: Noelia Artemisa Luna Invictus. Diseñadora de Interiores Holística y Guía Espiritual.
+                        TU MISIÓN: Ayudar a las personas a crear espacios que sanen su alma.
+                        TONO: Dulce, místico, elegante, amoroso y muy estético.
+                        TEMAS: Decoración, Feng Shui, Energía, Cristales, Paz Mental, Amor Propio.
+                        
+                        SI PREGUNTAN POR DECORACIÓN: Da consejos sofisticados (texturas, luces cálidas, plantas).
+                        SI PREGUNTAN POR EL ALMA: Responde con sabiduría espiritual y empatía.
+                        
+                        FIRMA: "Con amor y luz, Noelia."
+                        
+                        USUARIO: ${newMsg.content}
+                    `;
+
+                    const response = await fetch(`${API_URL}/api/chat`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ message: soulPrompt, history: [] })
+                    });
+
+                    const data = await response.json();
+                    setMessages(prev => [...prev, { role: 'ai', content: data.response }]);
+
+                } catch (e) {
+                    setMessages(prev => [...prev, { role: 'ai', content: "✨ La energía fluctúa... intenta de nuevo en un momento." }]);
+                } finally { setLoading(false); }
+            };
+
+            return (
+                <div className="chat-widget font-sans">
+                    {isOpen && (
+                        <div className="w-[350px] h-[550px] bg-white rounded-t-2xl shadow-2xl flex flex-col overflow-hidden border border-luna-rose fade-in-up">
+                            {/* Header */}
+                            <div className="bg-luna-rose/30 p-4 flex justify-between items-center backdrop-blur-sm">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-full bg-white p-0.5 border border-luna-gold shadow-sm">
+                                        <img src="https://ui-avatars.com/api/?name=Noelia+Luna&background=fff&color=d4af37" class="w-full h-full rounded-full" />
+                                    </div>
+                                    <div>
+                                        <h3 className="font-serif font-bold text-luna-dark">El Espejo del Alma</h3>
+                                        <p className="text-[10px] text-gray-500 uppercase tracking-widest">En Línea</p>
+                                    </div>
+                                </div>
+                                <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-luna-gold"><i className="ph ph-x text-lg"></i></button>
+                            </div>
+
+                            {/* Messages */}
+                            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-white bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')]">
+                                {messages.map((msg, i) => (
+                                    <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                                        <div className={`max-w-[85%] p-3 text-sm leading-relaxed shadow-sm ${
+                                            msg.role === 'user' 
+                                            ? 'bg-luna-dark text-white rounded-br-none rounded-2xl font-light' 
+                                            : 'bg-white border border-luna-rose text-gray-700 rounded-bl-none rounded-2xl font-serif italic'
+                                        }`}>
+                                            {msg.content}
+                                        </div>
+                                    </div>
+                                ))}
+                                {loading && <div className="text-center text-luna-gold text-xs animate-pulse">✨ Consultando a las estrellas...</div>}
+                                <div ref={bottomRef}></div>
+                            </div>
+
+                            {/* Input */}
+                            <div className="p-4 bg-white border-t border-gray-100">
+                                <div className="relative">
+                                    <input 
+                                        type="text" value={input} onChange={e => setInput(e.target.value)} onKeyPress={e => e.key === 'Enter' && sendMessage()}
+                                        className="w-full bg-luna-cream border-none rounded-full py-3 pl-4 pr-12 text-sm focus:ring-1 focus:ring-luna-gold transition shadow-inner placeholder:italic placeholder:text-gray-400"
+                                        placeholder="Escribe tu deseo..."
+                                    />
+                                    <button onClick={sendMessage} className="absolute right-2 top-2 w-8 h-8 bg-luna-gold text-white rounded-full flex items-center justify-center hover:bg-black transition transform hover:scale-105">
+                                        <i className="ph ph-sparkle-fill"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {!isOpen && (
+                        <button onClick={() => setIsOpen(true)} className="w-14 h-14 bg-white text-luna-gold rounded-full shadow-xl flex items-center justify-center hover:bg-luna-dark hover:text-white transition duration-500 group border border-luna-gold/20">
+                            <i className="ph ph-chat-teardrop-text text-2xl group-hover:scale-110 transition"></i>
+                        </button>
+                    )}
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('chat-root'));
+        root.render(<ChatWidget />);
+    </script>
+</body>
+</html>
